@@ -1,11 +1,17 @@
-pip
-bump2version
-wheel
-watchdog
-tox
-coverage
-Sphinx
-twine
+# linting
 ruff
 
+# docs
+Sphinx
+
+# package upload
+watchdog
+bump2version
+wheel
+tox
+build
+twine
+
+# test
+coverage
 pytest
