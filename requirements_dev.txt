@@ -1,4 +1,5 @@
 # linting
+pre-commit
 ruff
 
 # docs

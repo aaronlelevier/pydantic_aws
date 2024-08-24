@@ -5,9 +5,6 @@
 import pytest
 
 
-from pydantic_aws import pydantic_aws
-
-
 @pytest.fixture
 def response():
     """Sample pytest fixture.

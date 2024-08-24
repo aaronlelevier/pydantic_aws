@@ -8,6 +8,7 @@ import typing
 
 import pydantic
 
+
 class PrincipalMapEntry:
     def validate(self):
         # custom validate
@@ -34,7 +35,7 @@ class Statement(pydantic.BaseModel):
     # <effect_block> = "Effect" : ("Allow" | "Deny")
 
     Sid: str = pydantic.Field(default=None, pattern=r"[A-Za-z0-9]")
-    Effect: typing.Literal['Allow', 'Deny']
+    Effect: typing.Literal["Allow", "Deny"]
     Resource: typing.Union[str, list[str]]
     # XOR
     Principal: dict = None
@@ -46,9 +47,8 @@ class Statement(pydantic.BaseModel):
     Resource: typing.Union[str, list[str]] = None
     NotResource: typing.Union[str, list[str]] = None
 
-
     def sid_block(self):
-        pass #?
+        pass  # ?
 
     def principal_block(self):
         # <principal_block> = ("Principal" | "NotPrincipal") : ("*" | <principal_map>)
@@ -61,10 +61,10 @@ class Statement(pydantic.BaseModel):
         # XOR
         # Principal: str = None
         # NotPrincipal: str = None
-        pass #?
+        pass  # ?
 
     def effect_block(self):
-        pass #
+        pass  #
 
     def action_block(self):
         # <action_block> = ("Action" | "NotAction") :
@@ -73,7 +73,7 @@ class Statement(pydantic.BaseModel):
         # XOR
         # Action: typing.Union[str, list[str]] = None
         # NotAction: typing.Union[str, list[str]] = None
-        pass #
+        pass  #
 
     def resource_block(self):
         # <resource_block> = ("Resource" | "NotResource") :
@@ -82,7 +82,7 @@ class Statement(pydantic.BaseModel):
         # XOR
         # Resource: typing.Union[str, list[str]] = None
         # NotResource: typing.Union[str, list[str]] = None
-        pass #
+        pass  #
 
     def condition_block(self):
         # <condition_block> = "Condition" : { <condition_map> }
@@ -92,8 +92,7 @@ class Statement(pydantic.BaseModel):
         # }
         # <condition_value_list> = [<condition_value>, <condition_value>, ...]
         # <condition_value> = (<condition_value_string> | <condition_value_string> | <condition_value_string>)
-        pass #?
-
+        pass  # ?
 
 
 class Policy(pydantic.BaseModel):
@@ -110,7 +109,7 @@ class Policy(pydantic.BaseModel):
     # <statement_block> = "Statement" : [ <statement>, <statement>, ... ]
 
     Id: str = pydantic.Field(default=None, pattern=r"[A-Za-z0-9\_\-]")
-    Version: typing.Literal['2008-10-17', '2012-10-17']= None
+    Version: typing.Literal["2008-10-17", "2012-10-17"] = None
     Statement: typing.Union[Statement, list[Statement]]
 
 
